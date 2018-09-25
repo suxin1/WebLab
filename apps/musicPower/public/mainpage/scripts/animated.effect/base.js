@@ -4,6 +4,8 @@ class SoundAnimate {
         this.ctx = ctx;
         this.canvasHeight = ctx.height;
         this.canvasWidth = ctx.with;
+
+        this.loop = this.loop.bind(this);
     }
 
     setFFT() {
@@ -11,11 +13,27 @@ class SoundAnimate {
 
     }
 
-    draw() {
-        // TODO main draw function
+    getValues() {
+        // U should implement your own getValues.
+        console.error("U should implement your own getValues");
+        return []
     }
 
-    drawFFT(values) {
+    start() {
+        // TODO main draw function
+        this.loop();
+    }
+
+    loop() {
+        // Draw on canvas Continuously.
+        if(requestAnimationFrame) {
+            requestAnimationFrame(this.loop());
+            let values = this.getValues();
+            this.draw(values);
+        }
+    }
+
+    draw(values) {
         const {ctx, canvasHeight, canvasWidth} = this;
 
         // Clear canvas for redraw.
