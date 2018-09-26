@@ -8,15 +8,15 @@ const IS_DEVELOPMENT = env.get("NODE_ENV") === "development";
 
 export const MAINPAGE_CONFIG = {
     entry: [
-        "homepage/scripts/main.js",
-        "homepage/stylesheets/style.scss",
+        "mainpage/scripts/main.js",
+        "mainpage/stylesheets/style.scss",
     ]
         .map(file => {
             return path.resolve(PATH.rootPath, "public", file);
         }),
 
     output: {
-        path: path.resolve(PATH.rootPath, "assets/homepage"),
+        path: path.resolve(PATH.rootPath, "assets/mainpage"),
         pathinfo: IS_DEVELOPMENT,
         filename: "scripts/main.js"
     },

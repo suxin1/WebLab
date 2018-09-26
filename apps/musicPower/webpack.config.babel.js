@@ -18,8 +18,9 @@ const configs = [
     RESOURCES_CSS_CONFIG,
 ].map(config => Object.assign({
     optimization: {
-        minimize: !IS_DEVELOPMENT
+        minimize: false
     },
+    devtool: "inline-source-map",
     plugins: [
         new CleanWebpackPlugin(path.resolve(PATH.buildPath, "assets")),
         new ExtractTextPlugin("stylesheets/style.css"),

@@ -1,16 +1,11 @@
-class SoundAnimate {
+export class SoundAnimate {
 
     constructor(ctx) {
         this.ctx = ctx;
-        this.canvasHeight = ctx.height;
-        this.canvasWidth = ctx.with;
+        this.canvasHeight = ctx.canvas.height;
+        this.canvasWidth = ctx.canvas.width;
 
         this.loop = this.loop.bind(this);
-    }
-
-    setFFT() {
-        // Fast Fourier Transformation
-
     }
 
     getValues() {
@@ -20,14 +15,14 @@ class SoundAnimate {
     }
 
     start() {
-        // TODO main draw function
+        // TODO run main draw function
         this.loop();
     }
 
     loop() {
         // Draw on canvas Continuously.
         if(requestAnimationFrame) {
-            requestAnimationFrame(this.loop());
+            requestAnimationFrame(this.loop);
             let values = this.getValues();
             this.draw(values);
         }
