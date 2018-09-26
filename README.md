@@ -1,2 +1,2 @@
 # WebLab
-Cutting edge technology of the modern web experimentation.
+Experimentation of the "cutting edge" technology of the modern web:)
