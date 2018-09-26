@@ -1,5 +1,6 @@
 import Tone from "tone";
 import {SoundAnimate} from "./animate.effect/base";
+import {ParticleAnimate} from "./animate.effect/particle";
 
 
 class FFTAnimate extends SoundAnimate {
@@ -21,7 +22,7 @@ let player = new Tone.Player({
     "loop": true
 }).toMaster();
 
-let animation = new FFTAnimate(context, player);
+let animation = new ParticleAnimate(context, player);
 animation.start();
 
 playButton.onclick = function () {
