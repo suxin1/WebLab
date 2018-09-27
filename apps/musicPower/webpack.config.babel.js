@@ -12,21 +12,20 @@ import {RESOURCES_CSS_CONFIG} from "./webpack.config/webpack.config.resources";
 import env, {PATH} from "./webpack.config/environment";
 const IS_DEVELOPMENT = env.get("NODE_ENV") === "development";
 
-
 const configs = [
     MAINPAGE_CONFIG,
     RESOURCES_CSS_CONFIG,
 ].map(config => Object.assign({
     optimization: {
-        minimize: false
+        minimize: !IS_DEVELOPMENT
     },
-    devtool: "inline-source-map",
+    devtool: IS_DEVELOPMENT?"cheap-eval-source-map":"",
     plugins: [
         new CleanWebpackPlugin(path.resolve(PATH.buildPath, "assets")),
         new ExtractTextPlugin("stylesheets/style.css"),
         new ProgressBarPlugin({clear: false})
     ],
-    watch: true,
+    watch: IS_DEVELOPMENT,
     stats: IS_DEVELOPMENT ? "errors-only" : "normal"
 }, config));
 

@@ -4,7 +4,8 @@
   "description": "simple music player using web",
   "main": "index.js",
   "scripts": {
-    "start:react": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "build:dev": "webpack --mode development",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
