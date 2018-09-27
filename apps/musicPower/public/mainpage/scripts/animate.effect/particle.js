@@ -32,8 +32,8 @@ export class ParticleAnimate extends SoundAnimate {
         ctx.lineCap = 'round';
 
         for (let i = 0, len = values.length; i < len; i++) {
-            let x1 = 0,
-                x2 = (values[i] + 150);
+            let x1 = 20,
+                x2 = Math.floor(values[i] + 150);
 
             if(x2 === Number.POSITIVE_INFINITY || x2 === Number.NEGATIVE_INFINITY) {
                 x2 = 40;
@@ -42,9 +42,10 @@ export class ParticleAnimate extends SoundAnimate {
             ctx.translate(x, y);
             ctx.rotate(-Math.PI / 16 * i);
             ctx.beginPath();
-            ctx.moveTo(20, 0);
+            ctx.moveTo(x1, 0);
             ctx.lineTo(x2, 0);
-            ctx.closePath();
+            // ctx.arc(x2,0,1,0,Math.PI*2,true);
+            // ctx.closePath();
             ctx.stroke();
 
             ctx.restore();

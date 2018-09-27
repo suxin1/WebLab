@@ -1,9 +1,20 @@
 export class SoundAnimate {
 
     constructor(ctx) {
+        let size = 300;
+        let scale = window.devicePixelRatio;
+        alert(scale);
+        ctx.canvas.style.width = size + "px";
+        ctx.canvas.style.height = size + "px";
+
+        ctx.canvas.width = size * scale;
+        ctx.canvas.height = size * scale;
+
+        ctx.scale(scale, scale);
+
         this.ctx = ctx;
-        this.canvasHeight = ctx.canvas.height;
-        this.canvasWidth = ctx.canvas.width;
+        this.canvasHeight = size;
+        this.canvasWidth = size;
 
         this.loop = this.loop.bind(this);
     }
