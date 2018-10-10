@@ -26,7 +26,6 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-2": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "@material/button": "^0.39.1",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^0.1.19",
@@ -55,6 +54,5 @@
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
-    "tone": "^0.12.80"
   }
 }

@@ -1,7 +1,7 @@
-import {easing} from "../../lib/draw/easing";
-import {Draw} from "../../lib/draw/core";
+import {easing} from "../../../shared/scripts/draw/easing";
+import {Draw} from "../../../shared/scripts/draw/core";
 
-class CountDown extends Draw {
+export class CountDown extends Draw {
   constructor(ctx, w, h, padding) {
     super(ctx);
     this.ctx = ctx;
@@ -218,5 +218,3 @@ class CountDown extends Draw {
     this.stoped = true;
   }
 }
-
-export default CountDown;
