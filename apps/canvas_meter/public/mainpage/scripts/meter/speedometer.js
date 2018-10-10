@@ -1,7 +1,7 @@
 import {easing} from "../../lib/draw/easing";
 import {Draw} from "../../lib/draw/core";
 
-export const Meter = function (ctx, w, h, padding, duration, name, unit, min, max) {
+export const Speedometer = function (ctx, w, h, padding, duration, name, unit, min, max) {
   const dctx = new Draw(ctx);
 
   const raduis = w / 2 - padding,
@@ -222,7 +222,7 @@ export const Meter = function (ctx, w, h, padding, duration, name, unit, min, ma
     dctx.Text({
       text: name,
       x: center[0],
-      y: center[1] - 40,
+      y: center[1] - 30,
       styles: {
         fill: "#5f5d5e",
         font: `14px FjallaOne`,
@@ -234,7 +234,7 @@ export const Meter = function (ctx, w, h, padding, duration, name, unit, min, ma
     dctx.Text({
       text: unit,
       x: center[0],
-      y: center[1] + 40,
+      y: center[1] + 20,
       styles: {
         fill: "#5f5d5e",
         font: `14px FjallaOne`,
@@ -245,12 +245,13 @@ export const Meter = function (ctx, w, h, padding, duration, name, unit, min, ma
   };
 
   const draw = function (p) {
+    let {ctx} = dctx;
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     plate();
     scale();
     centerPlate();
     indicator(p);
     text(p);
-    ctx.draw();
   };
 
   const setValue = function(v) {
@@ -280,9 +281,11 @@ export const Meter = function (ctx, w, h, padding, duration, name, unit, min, ma
       currentTime = (new Date).getTime() - start;
     }, delta)
   };
+
   const stop = function() {
     clearInterval(interval);
-  }
+  };
+
   return {
     setValue: setValue,
     draw: draw,

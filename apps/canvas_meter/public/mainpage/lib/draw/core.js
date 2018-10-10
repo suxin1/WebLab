@@ -1,3 +1,4 @@
+console.log("Import Core.js")
 export class Draw {
   constructor(ctx) {
     this.ctx = ctx;

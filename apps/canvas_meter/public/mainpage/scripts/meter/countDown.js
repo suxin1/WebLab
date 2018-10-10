@@ -1,5 +1,5 @@
-import {easing} from "../../../shared/scripts/draw/easing";
-import {Draw} from "../../../shared/scripts/draw/core";
+import {easing} from "../../lib/draw/easing";
+import {Draw} from "../../lib/draw/core";
 
 export class CountDown extends Draw {
   constructor(ctx, w, h, padding) {
@@ -173,8 +173,8 @@ export class CountDown extends Draw {
     ctx.save();
     ctx.fillStyle = "#484443";
     ctx.font = `${parseInt(width/ 6)}px FjallaOne`;
-    ctx.setTextAlign("center");
-    ctx.setTextBaseline("middle");
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
     ctx.fillText(t + "\"", center[0] + 5, center[1]);
 
     ctx.restore();
@@ -182,14 +182,13 @@ export class CountDown extends Draw {
 
   draw(ea, t) {
     let ctx = this.ctx;
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     this.background();
     this.progressCircle(ea);
     this.scale();
     this.outerCircle();
     this.innerCircle();
     this.text(t);
-
-    ctx.draw();
   }
 
   start(duration, cb) {

@@ -70,9 +70,9 @@ export const Indicator = function (ctx, w, h, padding, title, unit, color) {
   };
 
   const draw = function (ea, value) {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     circle(ea);
     text(value);
-    ctx.draw();
   };
 
   const start = function (duration, value) {
