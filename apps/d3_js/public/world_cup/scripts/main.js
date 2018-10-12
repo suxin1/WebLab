@@ -1,5 +1,6 @@
 /*eslint no-undef: 2*/
 const d3 = require("d3");
+import "../stylesheets/style.scss";
 
 /**
  * @param start {Number}
@@ -17,6 +18,7 @@ function populate_year(start, end, step) {
   }
   return years;
 }
+
 
 (function () {
   "use strict";
@@ -342,7 +344,7 @@ function populate_year(start, end, step) {
     map.init(geo_json);
     let format = d3.timeParse("%d-%m-%Y (%H:%M h)");
 
-    d3.tsv("../assets/world_cup/world_cup_geo.tsv", function (d) {
+    d3.tsv("../assets/world_cup_geo.tsv", function (d) {
       let date = format(d["date"]);
       d["attendance"] = +d["attendance"];
       d["date"] = date;
@@ -353,7 +355,7 @@ function populate_year(start, end, step) {
   }
 
   // 获取geoJson地图数据
-  d3.json("../assets/world_cup/world_countries.json").then(data => {
+  d3.json("../assets/world_countries.json").then(data => {
     draw(data);
   });
 })();

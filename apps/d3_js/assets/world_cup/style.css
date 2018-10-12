@@ -1,8 +1,6 @@
-
 #vis-box {
   width: 1080px;
-  padding: 2rem;
-}
+  padding: 2rem; }
 
 /*****************************************
   Tooltip Style
@@ -15,42 +13,38 @@
   border: 1px dashed black;
   border-radius: .5rem;
   opacity: 0;
-  min-width: 16rem;
-}
+  min-width: 16rem; }
 
 #vis-box .tooltip ul {
-  padding: 0;
-}
+  padding: 0; }
+
 #vis-box .tooltip ul li {
-  list-style-position: inside;
-}
+  list-style-position: inside; }
 
 .button__list-row {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-auto-rows: 2rem;
   grid-gap: 0.5rem;
-  padding: 0;
-}
+  padding: 0; }
 
 .button__list-row li {
-  list-style: none;
-}
+  list-style: none; }
 
 .button__list-row button {
   width: 100%;
   height: 100%;
   border: 1px solid black;
-  color: black;
-}
+  color: black; }
+
 .button__list-row button:hover {
-  background: rgb(212, 88, 88);
-  color: white;
-}
+  background: #d45858;
+  color: white; }
 
 circle {
   fill: #4bdcff;
   stroke: #ff006d;
   stroke-width: 0.7;
-  opacity: 0.7;
-}
+  opacity: 0.7; }
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ3b3JsZF9jdXAvc3R5bGUuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
