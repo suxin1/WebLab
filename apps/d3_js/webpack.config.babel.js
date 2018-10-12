@@ -28,7 +28,8 @@ const configs = [
         new CleanWebpackPlugin(path.resolve(PATH.buildPath, "assets")),
         new ExtractTextPlugin("[name]/style.css"),
         new ProgressBarPlugin({clear: false}),
-        new CopyWebpackPlugin(["public/world_cup/world_countries.json", "public/world_cup/world_cup_geo.tsv",])
+        new CopyWebpackPlugin(["public/world_cup/world_countries.json", "public/world_cup/world_cup_geo.tsv",]),
+        new CleanWebpackPlugin(["assets"])
     ],
     watch: true,
     stats: IS_DEVELOPMENT ? "errors-only" : "normal"
