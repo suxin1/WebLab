@@ -33,7 +33,9 @@
  *   属性`chunks`.
  *
  * - 如果需要引入处在打包流程以外的文件，可以配置 CopyWebpackPlugin，将该文件
- *   复制到build文件夹。
+ *   复制到build文件夹，并在HTML模板里添加引用。
+ *
+ * - 当引用 node_module 下的库时，该库会被打包到 vendor 包文件里面。
  *
  * - 按需加载需要使用到 ES6 Module 中的 import()。
  *   import("<moduel name>").thne( <module name> => {})
@@ -51,18 +53,21 @@ import env, {PATH} from "./webpack.config/environment";
 const IS_DEVELOPMENT = env.get("NODE_ENV") === "development";
 
 
-const configs = [
-    // RESOURCES_CSS_CONFIG,
-    MULTIPAGE_CONFIG,
-].map(config => Object.assign({
-    optimization: {
-        minimize: false
+const config = Object.assign({
+    devServer: {
+      contentBase: path.resolve(PATH.rootPath, "build")
     },
-    devtool: "inline-source-map",
-
-    watch: true,
     stats: IS_DEVELOPMENT ? "errors-only" : "normal"
-}, config));
+}, MULTIPAGE_CONFIG);
 
 
-module.exports = configs;
+module.exports = (env, argv) => {
+    if(argv.mode === "development") {
+        config.devtool = "inline-source-map";
+        config.watch = true;
+    }
+    if(argv.mode === "production") {
+        config.optimization.minimize = true;
+    }
+    return config;
+};

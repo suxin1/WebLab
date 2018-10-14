@@ -1,3 +1,9 @@
+const d3 = require("d3");
+import {foo} from "../../shared/scripts/ui/UI";
+import "../stylesheets/style.scss";
+
+console.log(foo, "[ From Soddy Circle]")
+
 /**
  * Quadratic formula.
  * @param x1

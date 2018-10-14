@@ -18,7 +18,8 @@ function getEntry(file) {
 
 const entry = {
     "main_page": getEntry("mainpage/scripts/main.js"),
-    "world_cup": getEntry("world_cup/scripts/main.js")
+    "world_cup": getEntry("world_cup/scripts/main.js"),
+    "soddy_circle": getEntry("soddy_circle/scripts/main.js"),
 };
 export const MULTIPAGE_CONFIG = {
     // entry: [
@@ -34,7 +35,7 @@ export const MULTIPAGE_CONFIG = {
                 commons: {
                     chunks: "initial",
                     minChunks: 2,
-                    name: "commons",
+                    name: "shared",
                     maxInitialRequests: 5, // The default limit is too small to showcase the effect
                     minSize: 0 // This is example is too small to create commons chunks
                 },
@@ -49,27 +50,31 @@ export const MULTIPAGE_CONFIG = {
         }
     },
     output: {
-        path: path.resolve(PATH.rootPath, "assets"),
+        path: path.resolve(PATH.rootPath, "build"),
         pathinfo: IS_DEVELOPMENT,
-        filename: "[name]/[name].[contentHash:10].js"
+        filename: "statics/[name].[contentHash:10].js"
     },
     plugins: [
-        new CleanWebpackPlugin(["assets"], {
+        new CleanWebpackPlugin(["build"], {
             root: PATH.rootPath
         }),
-        new ExtractTextPlugin("[name]/style.css"),
+        new ExtractTextPlugin("statics/[name].[hash].css"),
         new ProgressBarPlugin({clear: false}),
         new CopyWebpackPlugin(["public/world_cup/world_countries.json", "public/world_cup/world_cup_geo.tsv",]),
-        new CleanWebpackPlugin(["assets"]),
         new HtmlWebpackPlugin({
             template: "views/world_cup.html",
-            chunks: ["vendor", "world_cup", "commons"],
+            chunks: ["vendor", "ui", "world_cup", "shared"],
             filename: "world_cup.html"
         }),
         new HtmlWebpackPlugin({
             template: "views/mainpage.html",
-            chunks: ["vendor", "main_page", "commons"],
+            chunks: ["vendor", "main_page", "shared"],
             filename: "index.html"
+        }),
+        new HtmlWebpackPlugin({
+            template: "views/soddy_circle.html",
+            chunks: ["vendor", "soddy_circle", "shared"],
+            filename: "soddy_circle.html"
         })
     ],
     module: moduleConfig

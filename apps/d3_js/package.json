@@ -4,7 +4,7 @@
   "description": "simple music player using web",
   "main": "index.js",
   "scripts": {
-    "start:react": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -55,6 +55,7 @@
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
-    "d3": "^5.7.0"
+    "d3": "^5.7.0",
+    "zepto": "^1.2.0"
   }
 }

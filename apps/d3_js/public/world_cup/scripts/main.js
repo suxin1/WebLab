@@ -1,8 +1,9 @@
 /*eslint no-undef: 2*/
 const d3 = require("d3");
 import "../stylesheets/style.scss";
-import {foo} from "../../shared/scripts/UI";
-console.log("World_cup: ", foo)
+import {Button} from "../../shared/scripts/ui";
+
+console.log(foo, "[ From World_cup]")
 
 /**
  * @param start {Number}
@@ -25,8 +26,8 @@ function populate_year(start, end, step) {
 (function () {
   "use strict";
   let margin = 0,
-    width = 1200 - margin,
-    height = 750 - margin;
+    width = 904 - margin,
+    height = 600 - margin;
 
   let svg = d3.select("#vis-box").append("svg")
     .style("background", "#a8bcc7")
@@ -38,7 +39,7 @@ function populate_year(start, end, step) {
 
 
   // 用来将经纬度转换为屏幕上的像素。
-  let projection = d3.geoMercator().scale(190).translate([width / 2, height / 2 + 100]);
+  let projection = d3.geoMercator().scale(150).translate([width / 2, height / 2 + 100]);
   let path = d3.geoPath().projection(projection);
 
 
@@ -121,7 +122,7 @@ function populate_year(start, end, step) {
 
 
   /**
-   * Map controller
+   * 地图
    * Call init with geoJson data to initialization the map.
    * @type {{init, highlight}}
    */
@@ -346,7 +347,7 @@ function populate_year(start, end, step) {
     map.init(geo_json);
     let format = d3.timeParse("%d-%m-%Y (%H:%M h)");
 
-    d3.tsv("../assets/world_cup_geo.tsv", function (d) {
+    d3.tsv("./world_cup_geo.tsv", function (d) {
       let date = format(d["date"]);
       d["attendance"] = +d["attendance"];
       d["date"] = date;
@@ -357,7 +358,7 @@ function populate_year(start, end, step) {
   }
 
   // 获取geoJson地图数据
-  d3.json("../assets/world_countries.json").then(data => {
+  d3.json("./world_countries.json").then(data => {
     draw(data);
   });
 })();

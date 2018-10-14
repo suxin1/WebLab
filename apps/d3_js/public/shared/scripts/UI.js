@@ -1,1 +1,0 @@
-export const foo = "This is the UI module";
