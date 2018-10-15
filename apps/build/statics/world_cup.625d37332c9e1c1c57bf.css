@@ -1,0 +1,44 @@
+/*****************************************
+  Tooltip Style
+******************************************/
+#vis-box .tooltip {
+  box-sizing: border-box;
+  position: absolute;
+  padding: 0 1rem;
+  background: white;
+  border: 1px dashed black;
+  border-radius: .5rem;
+  opacity: 0;
+  min-width: 16rem; }
+
+#vis-box .tooltip ul {
+  padding: 0; }
+
+#vis-box .tooltip ul li {
+  list-style-position: inside; }
+
+.button__list-row {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-auto-rows: 2rem;
+  grid-gap: 0.5rem;
+  padding: 0; }
+
+.button__list-row li {
+  list-style: none; }
+
+.button__list-row button {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  color: black; }
+
+.button__list-row button:hover {
+  background: #d45858;
+  color: white; }
+
+circle {
+  fill: #4bdcff;
+  stroke: #ff006d;
+  stroke-width: 0.7;
+  opacity: 0.7; }
