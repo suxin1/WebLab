@@ -36,6 +36,7 @@
     "eslint": "^5.5.0",
     "eslint-loader": "^2.1.0",
     "eslint-plugin-prettier": "^2.6.2",
+    "exports-loader": "^0.7.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^2.0.0",
     "habitat": "^3.1.2",
@@ -48,6 +49,7 @@
     "prettier": "^1.14.2",
     "progress-bar-webpack-plugin": "^1.11.0",
     "sass-loader": "^7.1.0",
+    "script-loader": "^0.7.2",
     "style-loader": "^0.23.0",
     "svg-url-loader": "^2.3.2",
     "webpack": "^4.20.0",
@@ -55,7 +57,9 @@
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
+    "animejs": "^2.2.0",
     "d3": "^5.7.0",
+    "mustache": "^3.0.0",
     "zepto": "^1.2.0"
   }
 }

@@ -11,9 +11,21 @@
 <noscript>
     You need to enable JavaScript to run this app.
 </noscript>
+<script type="text/template" id="item-template">
+    {{#items}}
+    <li class="item-card-item">
+        <a href="{{url}}" class="item-card">
+            <div class="item-card-cover" style="background-image: url({{cover}})"></div>
+            <div class="item-title">
+                {{title}}
+            </div>
+        </a>
+    </li>
+    {{/items}}
+</script>
 
-<ul class="list-view">
-    <li></li>
+<ul class="list-view" id="item-list">
+
 </ul>
 
 <!--

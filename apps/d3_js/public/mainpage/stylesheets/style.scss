@@ -10,10 +10,26 @@ body {
   flex-wrap: wrap;
   align-items: center;
 
-  min-height: 100vh;
   vertical-align: middle;
 }
 
-.list-view canvas {
-  flex-shrink: 0;
+.list-view li {
+  list-style: none;
+}
+
+.item-card {
+  display: block;
+  width: 200px;
+  background: white;
+  margin: .5rem;
+  transition: transform 200ms ease-in-out;
+}
+.item-card:hover {
+  transform: scale(1.1, 1.1);
+}
+.item-card-cover {
+  width: 100%;
+  padding-bottom: 70%;
+  background-size: cover;
+  background-position: center center;
 }

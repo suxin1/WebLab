@@ -1,10 +1,7 @@
 /*eslint no-undef: 2*/
 const d3 = require("d3");
 import "../stylesheets/style.scss";
-import {Button} from "../../shared/scripts/ui";
-
-console.log(foo, "[ From World_cup]")
-
+import "../../shared/stylesheets/article.scss";
 /**
  * @param start {Number}
  * @param end {Number}

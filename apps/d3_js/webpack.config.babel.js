@@ -33,7 +33,7 @@
  *   属性`chunks`.
  *
  * - 如果需要引入处在打包流程以外的文件，可以配置 CopyWebpackPlugin，将该文件
- *   复制到build文件夹，并在HTML模板里添加引用。
+ *   复制到build文件夹，并在HTML模板里添加引用。如果用的是CDN加载，可以配置 externals 属性。
  *
  * - 当引用 node_module 下的库时，该库会被打包到 vendor 包文件里面。
  *

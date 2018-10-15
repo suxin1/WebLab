@@ -1,9 +1,14 @@
 {
   "items": [
     {
-      "url": "www.baidu.com",
-      "cover": "www.baidu.com",
+      "url": "./world_cup.html",
+      "cover": "./images/world_cup.png",
       "title": "Map of the World Cup from year 1934"
+    },
+    {
+      "url": "./soddy_circle.html",
+      "cover": "./images/soddy_circle.png",
+      "title": "Soddy circle implementation"
     }
   ]
 }

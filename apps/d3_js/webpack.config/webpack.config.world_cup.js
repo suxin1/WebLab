@@ -61,6 +61,7 @@ export const MULTIPAGE_CONFIG = {
         new ExtractTextPlugin("statics/[name].[hash].css"),
         new ProgressBarPlugin({clear: false}),
         new CopyWebpackPlugin(["public/world_cup/world_countries.json", "public/world_cup/world_cup_geo.tsv",]),
+        new CopyWebpackPlugin([{from: "public/resources/images", to: "images"}],),
         new HtmlWebpackPlugin({
             template: "views/world_cup.html",
             chunks: ["vendor", "ui", "world_cup", "shared"],
