@@ -25,6 +25,7 @@ class ItemList {
     const {items} = this.state;
     let rendered = Mustache.render(this.template, items);
     this.target.html(rendered);
+
     // 元素已经加载到文档树，可以在此添加事件和访问元素。
     let functionBasedDuration = anime({
       targets: '.list-view .item-card-item',
