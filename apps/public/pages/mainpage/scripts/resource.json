@@ -22,7 +22,7 @@
       "url": "./sunflower.html",
       "cover": "./images/sunflower.png",
       "title": "Sunflower like drawing",
-      "type": "D3 SVG"
+      "type": "D3"
     }
   ]
 }

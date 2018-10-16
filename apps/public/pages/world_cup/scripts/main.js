@@ -1,7 +1,12 @@
 /*eslint no-undef: 2*/
+
+/**
+ * Created by Suxin(suxin1@live.com) in 2018/8/2.
+ */
+
 const d3 = require("d3");
 import "../stylesheets/style.scss";
-import "../../shared/stylesheets/article.scss";
+import "../../../shared/stylesheets/article.scss";
 /**
  * @param start {Number}
  * @param end {Number}

@@ -1,6 +1,6 @@
 const d3 = require("d3");
 import "../stylesheets/style.scss";
-import "../../shared/stylesheets/article.scss";
+import "../../../shared/stylesheets/article.scss";
 
 /**
  * Quadratic formula.

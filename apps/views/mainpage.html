@@ -6,26 +6,47 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no， maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#000000">
     <title>Canvas</title>
+    <script type="text/template" id="item-template">
+        {{#items}}
+        <li class="item-card-item">
+            <a href="{{url}}" class="item-card">
+                <div class="item-card-cover" style="background-image: url({{cover}})"></div>
+                <div class="item-card-title">
+                    <p>{{title}}<span class="tag">{{type}}</span></p>
+                </div>
+            </a>
+        </li>
+        {{/items}}
+    </script>
+    <script type="text/template" id="header">
+        <header>
+            <div class="header-logo">WebLab</div>
+
+            <div class="tag-list">
+                <ul class="nav-list">
+                    {{#items}}
+                    <li class="nav-item">
+                        <a href="" data-tag="{{name}}">{{name}}</a>
+                    </li>
+                    {{/items}}
+                </ul>
+            </div>
+
+            <div class="nav-list">
+                <ul>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </div>
+        </header>
+    </script>
 </head>
+
 <body>
 <noscript>
     You need to enable JavaScript to run this app.
 </noscript>
-<script type="text/template" id="item-template">
-    {{#items}}
-    <li class="item-card-item">
-        <a href="{{url}}" class="item-card">
-            <div class="item-card-cover" style="background-image: url({{cover}})"></div>
-            <div class="item-card-title">
-                <p>{{title}}<span class="tag">{{type}}</span></p>
-            </div>
-        </a>
-    </li>
-    {{/items}}
-</script>
 
 <ul class="list-view" id="item-list">
-
 </ul>
 
 <!--

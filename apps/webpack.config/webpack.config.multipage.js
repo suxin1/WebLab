@@ -13,25 +13,21 @@ function getEntry(file) {
 }
 
 const entry = {
-  "main_page": getEntry("mainpage/scripts/main.js"),
-  "world_cup": getEntry("world_cup/scripts/main.js"),
-  "soddy_circle": getEntry("soddy_circle/scripts/main.js"),
-  "canvas_meter": getEntry("canvas_meter/scripts/main.js"),
+  "main_page": getEntry("pages/mainpage/scripts/main.js"),
+  "world_cup": getEntry("pages/world_cup/scripts/main.js"),
+  "soddy_circle": getEntry("pages/soddy_circle/scripts/main.js"),
+  "canvas_meter": getEntry("pages/canvas_meter/scripts/main.js"),
   "sunflower": getEntry("pages/sunflower/main.js")
 };
+
 export const MULTIPAGE_CONFIG = (mode) => {
-  // entry: [
-  //     "world_cup/scripts/main.js",
-  //     "world_cup/stylesheets/style.scss",
-  // ].map(file => {
-  //     return path.resolve(PATH.rootPath, "public", file);
-  // }),
+
   const IS_DEVELOPMENT = mode === "development";
 
   let plugins = [
     new ExtractTextPlugin("statics/[name].[hash].css"),
     new ProgressBarPlugin({clear: false}),
-    new CopyWebpackPlugin(["public/world_cup/world_countries.json", "public/world_cup/world_cup_geo.tsv",]),
+    new CopyWebpackPlugin(["public/resources/world_countries.json", "public/resources/world_cup_geo.tsv",]),
     new CopyWebpackPlugin([{from: "public/resources/images", to: "images"}],),
     new HtmlWebpackPlugin({
       template: "views/world_cup.html",

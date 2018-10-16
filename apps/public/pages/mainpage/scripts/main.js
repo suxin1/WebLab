@@ -1,13 +1,16 @@
 import "../stylesheets/style.scss";
-import "../../shared/stylesheets/article.scss";
+import "../../../shared/stylesheets/article.scss";
 import items from "./resource";
 import $ from "zepto";
 import anime from "animejs";
 
 const Mustache = require("mustache");
 
-import {Button} from "../../shared/lib/ui";
+import {Button} from "../../../shared/lib/ui";
 
+/**
+ * Created by Suxin(suxin1@live.com) in 2018/10/12.
+ */
 class ItemList {
     constructor(target, template) {
         this.target = target;
@@ -68,4 +71,7 @@ class ItemList {
 
     let itemList = new ItemList(target, itemCardTemp);
     itemList.setState({items: items});
+
+    let headerTemp = $("#header").html();
+    let headerTarget = $("#header-container").html();
 })();
