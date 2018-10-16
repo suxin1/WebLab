@@ -25,6 +25,14 @@ export class Header {
     this.render();
   }
 
+  closeMenu() {
+
+  }
+
+  openMenu() {
+
+  }
+
   render() {
     const {tags} = this.state;
 
