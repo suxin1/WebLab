@@ -17,6 +17,12 @@
       "cover": "./images/canvas_meter.png",
       "title": "Indicators made with canvas",
       "type": "Canvas"
+    },
+    {
+      "url": "./sunflower.html",
+      "cover": "./images/sunflower.png",
+      "title": "Sunflower like drawing",
+      "type": "D3 SVG"
     }
   ]
 }

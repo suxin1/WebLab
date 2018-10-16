@@ -21,8 +21,17 @@ class ItemList {
         this.render();
     }
 
+    setFilter(filter) {
+        this.filter = filter;
+        this.render();
+    }
+
     render() {
+        const {filter} = this;
         const {items} = this.state;
+        if(filter) {
+            items.items = filter(items.items);
+        }
         let rendered = Mustache.render(this.template, items);
         this.target.html(rendered);
 

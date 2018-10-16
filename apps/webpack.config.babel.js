@@ -54,16 +54,8 @@ import env, {PATH} from "./webpack.config/environment";
 const IS_DEVELOPMENT = env.get("NODE_ENV") === "development";
 
 
-const config = Object.assign({
-    devServer: {
-        contentBase: path.resolve(PATH.rootPath, "build"),
-        host: "0.0.0.0"
-    },
-    stats: IS_DEVELOPMENT ? "errors-only" : "normal"
-}, MULTIPAGE_CONFIG);
-
-
 module.exports = (env, argv) => {
+    let config = MULTIPAGE_CONFIG(argv.mode);
     if (argv.mode === "development") {
         config.devtool = "inline-source-map";
         config.watch = true;
