@@ -75,6 +75,12 @@ export const moduleConfig = {
     {
       test: require.resolve('zepto'),
       loader: 'exports-loader?window.Zepto!script-loader'
+    },
+    {
+      test: /\.(html)$/,
+      use: {
+        loader: 'html-loader',
+      }
     }
   ]
 };

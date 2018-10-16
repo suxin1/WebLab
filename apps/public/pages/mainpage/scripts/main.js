@@ -1,77 +1,37 @@
-import "../stylesheets/style.scss";
-import "../../../shared/stylesheets/article.scss";
-import items from "./resource";
-import $ from "zepto";
-import anime from "animejs";
-
-const Mustache = require("mustache");
-
-import {Button} from "../../../shared/lib/ui";
-
 /**
  * Created by Suxin(suxin1@live.com) in 2018/10/12.
  */
-class ItemList {
-    constructor(target, template) {
-        this.target = target;
-        this.template = template;
-        Mustache.parse(template);
-    }
 
-    setState(state) {
-        let newState = Object.assign({}, this.state, state);
-        this.state = newState;
-        this.render();
-    }
+import "../stylesheets/style.scss";
+import "../../../shared/stylesheets/common/style.scss";
+import "../../../shared/stylesheets/article.scss";
+import "normalize.css";
 
-    setFilter(filter) {
-        this.filter = filter;
-        this.render();
-    }
+import items from "./resource";
+import $ from "zepto";
 
-    render() {
-        const {filter} = this;
-        const {items} = this.state;
-        if(filter) {
-            items.items = filter(items.items);
-        }
-        let rendered = Mustache.render(this.template, items);
-        this.target.html(rendered);
+import {Header} from "../../../components/header/header";
 
-        // 元素已经加载到文档树，可以在此添加事件和访问元素。
-        let functionBasedDuration = anime({
-            targets: '.list-view .item-card-item',
-            translateX: [-250, 0],
-            direction: 'alternate',
-            opacity: [0, 1],
-            loop: false,
-            easing: 'easeOutQuart',
-            delay: function (el, i) {
-                return i * 300
-            },
-            duration: 500
-        });
+import {ItemList} from "./itemlist";
 
-        $(".item-card").on({
-            "mouseenter": function (e) {
-                let dom = $(e.currentTarget);
-                dom.addClass("active");
-            },
-            "mouseleave": function(e) {
-                let dom =$(e.currentTarget);
-                dom.removeClass("active");
-            }
-        })
-    }
+
+/**
+ * Extract Tag Data from resource.
+ */
+function getTags(items) {
+  let tags = items.map((item) => {
+    return item.type;
+  });
+  return Array.from(new Set(tags));
 }
 
 (function () {
-    let itemCardTemp = $("#item-template").html();
-    let target = $("#item-list");
+  let itemCardTemp = $("#item-template").html();
+  let target = $("#item-list");
 
-    let itemList = new ItemList(target, itemCardTemp);
-    itemList.setState({items: items});
+  let itemList = new ItemList(target, itemCardTemp);
+  itemList.setState({items: items});
 
-    let headerTemp = $("#header").html();
-    let headerTarget = $("#header-container").html();
+  let headerTarget = $("#header-container");
+  let header = new Header(headerTarget, getTags(items.items));
 })();

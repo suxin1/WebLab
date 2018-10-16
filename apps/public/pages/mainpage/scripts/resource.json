@@ -4,7 +4,7 @@
       "url": "./world_cup.html",
       "cover": "./images/world_cup.png",
       "title": "Map of the World Cup from year 1934",
-      "type": "D3 Data Visualization"
+      "type": "Data Visualization"
     },
     {
       "url": "./soddy_circle.html",

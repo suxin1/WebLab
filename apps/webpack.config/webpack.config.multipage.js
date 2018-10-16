@@ -29,6 +29,7 @@ export const MULTIPAGE_CONFIG = (mode) => {
     new ProgressBarPlugin({clear: false}),
     new CopyWebpackPlugin(["public/resources/world_countries.json", "public/resources/world_cup_geo.tsv",]),
     new CopyWebpackPlugin([{from: "public/resources/images", to: "images"}],),
+
     new HtmlWebpackPlugin({
       template: "views/world_cup.html",
       chunks: ["vendor", "ui", "world_cup", "shared"],

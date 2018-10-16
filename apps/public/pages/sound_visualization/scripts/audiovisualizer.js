@@ -54,14 +54,14 @@ function handleFiles(files) {
 		ID3.loadTags(url, function() {
 			var tags = ID3.getAllTags(url);
 
-//                    console.log(tags.title.toString().length);
-//                    if (tags.title.length > 14) {
-//                        var newTitle = tags.title.substring(0,14);
+//                    console.log(tags.json.title.toString().length);
+//                    if (tags.json.title.length > 14) {
+//                        var newTitle = tags.json.title.substring(0,14);
 //                        newTitle += "...";
 //                        $("#title").html(newTitle);
 //                    }
 //                    else {
-//                        $("#title").html(tags.title);
+//                        $("#title").html(tags.json.title);
 //                    }
 			if (tags.title.length > 14 && tags.title.length <= 17) {
 
