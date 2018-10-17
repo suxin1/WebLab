@@ -27,11 +27,8 @@ export class ItemList {
 
   render() {
     const {filter} = this;
-    const {items} = this.state;
-    if (filter) {
-      items.items = filter(items.items);
-    }
-    let rendered = Mustache.render(this.template, items);
+
+    let rendered = Mustache.render(this.template, this.state);
     this.target.html(rendered);
 
     // 元素已经加载到文档树，可以在此添加事件和访问元素。

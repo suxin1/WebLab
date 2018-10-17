@@ -2,21 +2,7 @@
     <header>
         <div class="header-logo">WebLab</div>
 
-        <div class="nav-group">
-            <span class="nav-header">Category</span>
-            <ul class="tag-list">
-                {{#tags}}
-                <li>
-                    <a class="nav-item" href="#" data-tag="{{name}}">{{.}}</a>
-                </li>
-                {{/tags}}
-            </ul>
-            <span class="nav-header">Navigation</span>
-            <ul class="nav-list">
-                <li><a class="nav-item" href="about.html">About</a></li>
-            </ul>
-        </div>
-        <div class="display-sm-tablet menu-button hamburger">
+        <div class="display-mobile menu-button hamburger">
             <div class="cheese"></div>
             <div class="salad"></div>
             <div class="meet"></div>
@@ -24,18 +10,20 @@
     </header>
 
     <nav class="display-sm-tablet nav-group sidebar">
-        <span class="nav-header">Category</span>
-        <ul class="tag-list">
-            {{#tags}}
-            <li>
-                <a class="nav-item" href="#" data-tag="{{name}}">{{.}}</a>
-            </li>
-            {{/tags}}
-        </ul>
-        <span class="nav-header">Navigation</span>
-        <ul class="nav-list">
-            <li><a class="nav-item" href="index.html">Home</a></li>
-            <li><a class="nav-item" href="about.html">About</a></li>
-        </ul>
+        <div class="nav-list-container">
+            <span class="nav-header">Category</span>
+            <ul class="tag-list">
+                {{#tags}}
+                <li>
+                    <a class="nav-item" href="#" data-tag="{{.}}">{{.}}</a>
+                </li>
+                {{/tags}}
+            </ul>
+            <span class="nav-header">Navigation</span>
+            <ul class="nav-list">
+                <li><a class="nav-item" href="index.html">Home</a></li>
+                <!--<li><a class="nav-item" href="about.html">About</a></li>-->
+            </ul>
+        </div>
     </nav>
 </div>

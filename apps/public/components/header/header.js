@@ -9,17 +9,22 @@ import "./style.scss";
 import anime from "animejs";
 
 export class Header {
-  constructor(target, tagItems) {
+  constructor({target, tagItems, onSidebarClose, onSidebarOpen, onCatClick}) {
     this.target = target;
     this.template = headerTemp;
-    this.tagItems = tagItems;
     this.sideBarWidth = 280;
+
+    this.onSidebarClose = onSidebarClose;
+    this.onSidebarOpen = onSidebarOpen;
+    this.onCatClick = onCatClick;
 
     this.state = {
       tags: tagItems, // {Array}
     };
     this.menuOpened = false;
     this.render();
+
+    // TODO Register Event for close sidebar. Using Observer pattern.
   }
 
   setState(state) {
@@ -31,15 +36,17 @@ export class Header {
     const windowWidth = window.innerWidth;
     this.sideBarControllButton.removeClass("opened");
     this.menuOpened = false;
+    $(this.sideBar).removeClass("opened");
 
-    if(windowWidth<=414) {
-      $(this.sideBar).hide();
-      $(".main-content").show();
+    if (this.onSidebarClose) this.onSidebarClose(windowWidth);
+
+    if (windowWidth <= 414) {
       return;
     }
+
     anime({
       targets: this.sideBar,
-      translateX: [-this.sideBarWidth, 0],
+      translateX: [-(this.sideBarWidth), 0],
       easing: 'easeOutQuart',
       duration: 300,
     });
@@ -55,12 +62,13 @@ export class Header {
     const windowWidth = window.innerWidth;
     this.sideBarControllButton.addClass("opened");
     this.menuOpened = true;
+    $(this.sideBar).addClass("opened");
+    if (this.onSidebarOpen) this.onSidebarOpen(windowWidth);
 
-    if(windowWidth<=414) {
-      $(this.sideBar).show();
-      $(".main-content").hide();
+    if (windowWidth <= 414) {
       return;
     }
+
     anime({
       targets: this.sideBar,
       translateX: [0, -this.sideBarWidth],
@@ -85,7 +93,8 @@ export class Header {
     this.sideBarControllButton = $(".header .menu-button");
     this.sideBar = $(".sidebar")[0];
     this.header = $(".header header")[0];
-    this.navItems = $(".nav-group .nav-item");
+    this.navItems = $("nav.sidebar .nav-item");
+    this.catItems = $(".tag-list .nav-item");
 
     this.sideBarControllButton.on("click", (e) => {
       const {menuOpened} = this;
@@ -96,8 +105,12 @@ export class Header {
       }
     });
 
-    this.navItems.on("click", (e) => {
+    this.catItems.on("click", (e) => {
       this.closeMenu();
-    })
+      this.onCatClick(e);
+      let _target = $(e.currentTarget);
+      this.catItems.removeClass("active");
+      _target.addClass("active");
+    });
   }
 }
