@@ -40,6 +40,7 @@
  * - 按需加载需要使用到 ES6 Module 中的 import()。
  *   import("<moduel name>").thne( <module name> => {})
  *
+ *  TODO Add Hot Module Replacement to development mode.
  ****************************************************************************/
 
 "use strict";
