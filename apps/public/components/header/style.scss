@@ -1,34 +1,43 @@
-header {
+.header {
+  font-family: "Montserrat Medium", Helvetica, sans-serif;
+}
+
+.header header {
   box-sizing: border-box;
-  background-color: rgba(255,255,255,.99);
+  background-color: rgba(255, 255, 255, .99);
   position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
+  right: 0;
   height: 4rem;
-  width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
 }
-header ul {
+
+.header ul {
   padding: 0;
+  margin: 0;
 }
-header ul li {
+
+.header ul li {
   list-style: none;
 }
-header a {
+
+.header a {
   text-decoration: none;
   color: black;
   display: block;
 }
-header a:hover {
+
+.header a:hover {
   color: #4eb4e2;
 }
 
-header .header-logo {
+.header .header-logo {
   font-size: 2rem;
   font-weight: lighter;
   color: #002f47;
@@ -37,6 +46,7 @@ header .header-logo {
 .nav-group {
   display: flex;
   flex-shrink: 1;
+
   .nav-header {
     padding: 0 .5rem;
     height: 1.5rem;
@@ -47,54 +57,112 @@ header .header-logo {
   }
 
   .nav-item {
-    padding: .5rem .5rem;
-    color: black;
+    padding: 22px 17px 22px 22px;
+    color: #343639;
+    border-bottom: 1px solid #dddddd;
+    text-transform: uppercase;
   }
   .nav-item:hover {
     color: #4eb4e2;
   }
 }
 
-.nav-group ul {
-  padding-left: 2rem;
-}
-
 .tag-list {
   display: flex;
 }
 
+/**
+  Element Style
+ */
+.hamburger {
+  cursor: pointer;
+  .cheese, .salad, .meet {
+    width: 27px;
+    border-top: 3px solid #00a2c5;
+    margin-top: 6px;
+    transition: transform 200ms linear;
+  }
+}
+
+.hamburger.opened {
+  .salad {
+    opacity: 0;
+  }
+  .cheese {
+    transform-origin: right top;
+    transform: rotate(-45deg);
+  }
+  .meet {
+    transform-origin: right bottom;
+    transform: rotate(45deg);
+  }
+}
+
+/**
+  Responsive Layout Style
+ */
 .display-sm-tablet {
   display: none;
 }
-.menu-button {
-  position: absolute;
-  top: 1.2rem;
-  left: -80px;
+
+.sidebar {
+  display: none;
 }
 
 /**
   Small Screen
  */
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
+  header .nav-group {
+    display: none;
+  }
   nav.nav-group {
     display: flex;
     flex-direction: column;
     position: fixed;
+    z-index: 20;
     top: 0;
-    right: -240px;
-    height: 100vh;
+    right: -280px;
+    height: calc(100vh - 4rem);
     background: white;
-    width: 240px;
+    width: 280px;
     .nav-header {
-      display: block;
+      display: inline-block;
+      width: fit-content;
     }
     ul {
       flex-direction: column;
       padding: 0;
     }
   }
+  .sidebar {
+    display: block;
+  }
+
   .display-sm-tablet {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  header .nav-group {
+    display: none;
+  }
+  nav.nav-group {
+    display: none;
+    position: static;
+    width: auto;
+    .nav-header {
+      display: inline-block;
+      width: fit-content;
+    }
+    ul {
+      flex-direction: column;
+      padding: 0;
+    }
+  }
+  .sidebar {
     display: block;
   }
 }

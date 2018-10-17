@@ -2,6 +2,7 @@
  * Created by Suxin(suxin1@live.com) in 2018/10/16.
  */
 import headerTemp from "./header.html";
+
 const Mustache = require("mustache");
 
 import "./style.scss";
@@ -12,6 +13,7 @@ export class Header {
     this.target = target;
     this.template = headerTemp;
     this.tagItems = tagItems;
+    this.sideBarWidth = 280;
 
     this.state = {
       tags: tagItems, // {Array}
@@ -26,11 +28,51 @@ export class Header {
   }
 
   closeMenu() {
+    const windowWidth = window.innerWidth;
+    this.sideBarControllButton.removeClass("opened");
+    this.menuOpened = false;
 
+    if(windowWidth<=414) {
+      $(this.sideBar).hide();
+      $(".main-content").show();
+      return;
+    }
+    anime({
+      targets: this.sideBar,
+      translateX: [-this.sideBarWidth, 0],
+      easing: 'easeOutQuart',
+      duration: 300,
+    });
+    anime({
+      targets: this.header,
+      right: [this.sideBarWidth, 0],
+      easing: 'easeOutQuart',
+      duration: 300,
+    });
   }
 
   openMenu() {
+    const windowWidth = window.innerWidth;
+    this.sideBarControllButton.addClass("opened");
+    this.menuOpened = true;
 
+    if(windowWidth<=414) {
+      $(this.sideBar).show();
+      $(".main-content").hide();
+      return;
+    }
+    anime({
+      targets: this.sideBar,
+      translateX: [0, -this.sideBarWidth],
+      easing: 'easeOutQuart',
+      duration: 300,
+    });
+    anime({
+      targets: this.header,
+      right: [0, this.sideBarWidth],
+      easing: 'easeOutQuart',
+      duration: 300,
+    });
   }
 
   render() {
@@ -39,32 +81,23 @@ export class Header {
     let rendered = Mustache.render(this.template, {tags: tags});
     this.target.html(rendered);
 
-    // let menuAnimation = anime({
-    //   targets: 'header .nav-group',
-    //   translateX: [-250, 0],
-    //   direction: 'alternate',
-    //   opacity: [0, 1],
-    //   loop: false,
-    //   easing: 'easeOutQuart',
-    //   delay: 300,
-    //   duration: 1000,
-    // });
+    // Extract Dom node necessary for later use for performance concern.
+    this.sideBarControllButton = $(".header .menu-button");
+    this.sideBar = $(".sidebar")[0];
+    this.header = $(".header header")[0];
+    this.navItems = $(".nav-group .nav-item");
 
-    $(".menu-button").on("click", function(e) {
+    this.sideBarControllButton.on("click", (e) => {
       const {menuOpened} = this;
-      let animationArr = [0, -240];
-      if(menuOpened) {
-        animationArr = [-240, 0]
+      if (menuOpened) {
+        this.closeMenu();
+      } else {
+        this.openMenu();
       }
-      this.menuOpened = !menuOpened;
-      anime({
-      targets: 'header .nav-group',
-      translateX: animationArr,
-      direction: 'alternate',
-      loop: false,
-      easing: 'easeOutQuart',
-      duration: 300,
     });
+
+    this.navItems.on("click", (e) => {
+      this.closeMenu();
     })
   }
 }

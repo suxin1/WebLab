@@ -81,6 +81,20 @@ export const moduleConfig = {
       use: {
         loader: 'html-loader',
       }
-    }
+    },
+    // {
+    //   test: /\.(png|svg)$/,
+    //   loader: 'url-loader?limit=100000',
+    //   options: {
+    //     name: "./[name].[ext]"
+    //   }
+    // },
+    {
+      test: /\.(ttf|eot|woff|woff2)$/,
+      loader: 'file-loader',
+      options: {
+        name: '/fonts/[name].[ext]',
+      },
+    },
   ]
 };
