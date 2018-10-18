@@ -24,7 +24,7 @@ export class Header {
     this.menuOpened = false;
     this.render();
 
-    // TODO Register Event for close sidebar. Using Observer pattern.
+    // TODO Register Event for close sidebar. Using Observer pattern to reduce coupling.
   }
 
   setState(state) {
