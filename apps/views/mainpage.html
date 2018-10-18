@@ -8,7 +8,11 @@
     <title>Canvas</title>
     <script type="text/template" id="item-template">
         {{#items}}
-        <li class="item-card-item">
+        <li class="
+        item-card-item
+        mdc-layout-grid__cell
+        mdc-layout-grid__cell--span-4-tablet
+        mdc-layout-grid__cell--span-3-desktop">
             <a href="{{url}}" class="item-card">
                 <div class="item-card-cover" style="background-image: url({{cover}})"></div>
                 <div class="item-card-title">
@@ -26,8 +30,10 @@
 </noscript>
 <div id="header-container"></div>
 <div class="main-content">
-    <ul class="list-view" id="item-list">
-    </ul>
+    <div class="mdc-layout-grid">
+        <ul class="list-view mdc-layout-grid__inner" id="item-list">
+        </ul>
+    </div>
 </div>
 
 

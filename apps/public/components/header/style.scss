@@ -158,7 +158,10 @@ nav.nav-group {
   header .nav-group {
     display: none;
   }
-  .sidebar .nav-list-container {
+  nav.sidebar {
+    height: calc(100vh - 4rem);
+  }
+  nav.sidebar .nav-list-container {
     height: calc(100vh - 4rem);
   }
   nav.nav-group {

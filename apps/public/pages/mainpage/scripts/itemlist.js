@@ -40,7 +40,7 @@ export class ItemList {
       loop: false,
       easing: 'easeOutQuart',
       delay: function (el, i) {
-        return i * 300
+        return i * 100
       },
       duration: 500
     });
