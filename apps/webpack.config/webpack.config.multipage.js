@@ -17,7 +17,8 @@ const entry = {
   "world_cup": getEntry("pages/world_cup/scripts/main.js"),
   "soddy_circle": getEntry("pages/soddy_circle/scripts/main.js"),
   "canvas_meter": getEntry("pages/canvas_meter/scripts/main.js"),
-  "sunflower": getEntry("pages/sunflower/main.js")
+  "sunflower": getEntry("pages/sunflower/main.js"),
+  "sine_wave": getEntry("pages/sineWave/main.js"),
 };
 
 export const MULTIPAGE_CONFIG = (mode) => {
@@ -54,7 +55,12 @@ export const MULTIPAGE_CONFIG = (mode) => {
       template: "public/pages/sunflower/index.html",
       chunks: ["vendor", "sunflower", "shared"],
       filename: "sunflower.html"
-    })
+    }),
+    new HtmlWebpackPlugin({
+      template: "public/pages/sineWave/index.html",
+      chunks: ["vendor", "sine_wave", "shared"],
+      filename: "sine_wave.html"
+    }),
   ];
 
   if (!IS_DEVELOPMENT) {
