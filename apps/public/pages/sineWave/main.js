@@ -1,4 +1,6 @@
 import $ from "zepto";
+import canvas_obj from "./canvas";
+
 
 /**
  * Sine Parametrize Function A Sin(B t + C) + D
@@ -19,23 +21,21 @@ const sine = function (a, b, c, d) {
 const singleSineWave = {
   init: function () {
     this.sine_wave_function = sine(20, 5, 0, 0);
-
-    // Scale to eliminate blur on mobile.
-    let ctx = $("#singleSineWave")[0].getContext("2d");
-    let scale = window.devicePixelRatio;
     let width = 300,
       height = 150;
 
-    ctx.canvas.style.width = width + "px";
-    ctx.canvas.style.height = height + "px";
+    let canvas = canvas_obj($("#singleSineWave")[0]);
+    let {ctx, dpi, set, get} = canvas;
+    set.style.height(height);
+    set.style.width(width);
 
-    ctx.canvas.width = width * scale;
-    ctx.canvas.height = height * scale;
+    // Fix blur on mobile
+    set.attr.height(get.style.height() * dpi);
+    set.attr.width(get.style.width() * dpi);
 
-    ctx.scale(scale, scale);
     this.ctx = ctx;
-    this.width = ctx.canvas.width;
-    this.height = ctx.canvas.height;
+    this.width = width;
+    this.height = height;
 
     this.draw();
 
