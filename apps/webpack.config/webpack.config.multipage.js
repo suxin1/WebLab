@@ -7,6 +7,7 @@ import ExtractTextPlugin from "extract-text-webpack-plugin";
 import ProgressBarPlugin from "progress-bar-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 
 function getEntry(file) {
   return path.resolve(PATH.rootPath, "public", file);
@@ -58,6 +59,7 @@ export const MULTIPAGE_CONFIG = (mode) => {
     }),
     new HtmlWebpackPlugin({
       template: "public/pages/sineWave/index.html",
+      includeSiblingChunks: true,
       chunks: ["vendor", "sine_wave", "shared"],
       filename: "sine_wave.html"
     }),
@@ -65,9 +67,10 @@ export const MULTIPAGE_CONFIG = (mode) => {
 
   if (!IS_DEVELOPMENT) {
     // Production 环境下清除历史文件。
-    plugins.push(new CleanWebpackPlugin(["build"], {
-      root: PATH.rootPath
-    }),)
+    plugins.push(
+        new CleanWebpackPlugin(["build"], {root: PATH.rootPath}),
+        new BundleAnalyzerPlugin()
+    )
   }
 
   return {
@@ -83,11 +86,10 @@ export const MULTIPAGE_CONFIG = (mode) => {
             minSize: 0 // This is example is too small to create commons chunks
           },
           vendor: {
-            test: /node_modules/,
+            test: /[\\/]node_modules[\\/]/,
             chunks: "initial",
             name: "vendor",
-            priority: 10,
-            enforce: true
+            priority: 1,
           }
         }
       }
@@ -95,7 +97,7 @@ export const MULTIPAGE_CONFIG = (mode) => {
     output: {
       path: path.resolve(PATH.rootPath, "build"),
       pathinfo: IS_DEVELOPMENT,
-      filename: "statics/[name].[contentHash:10].js"
+      filename: "statics/[name].[contentHash:12].js"
     },
     plugins: plugins,
     module: moduleConfig,

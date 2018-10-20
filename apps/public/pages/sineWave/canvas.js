@@ -41,7 +41,16 @@ export default function canvas_obj(ele) {
         ele.setAttribute("width", wd);
       }
     }
+  };
+  returnable.fixResolution = function (width, height) {
+    const {dpi, get, set, ctx} = returnable;
+    set.style.height(height);
+    set.style.width(width);
 
+    // Fix blur on mobile
+    set.attr.height(get.style.height() * dpi);
+    set.attr.width(get.style.width() * dpi);
+    ctx.scale(dpi, dpi);
   };
 
   return returnable;
