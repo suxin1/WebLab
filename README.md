@@ -23,13 +23,13 @@ npm run build
 
 Feel free to copy past all the code in this Repository.
 
-### 打包构建
+### 打包构建方案
+项目使用webpack打包构建。
 
-#### 特性
+#### 尝试解决的问题
  * JQuery, Zepto, D3等公共库动态加载
  * 模块化 (AMD/CommonJS/UMD/ES6 Module)
- * 资源缓存(Caching with hashing)
- * 首屏加载优化
+ * 资源持久化缓存(Caching with hashing)
 
 #### 解决方案:
 
@@ -55,5 +55,5 @@ Feel free to copy past all the code in this Repository.
  
  ### 包文件分析
  用 webpack-bundle-analyzer 生成Treemap来分析打包后的文件。
- 本项目某时间的Treemap。这张图很好的呈现了打包后的文件大小，所包含库等有用的信息，方便后期更深入的优化。
+ 下图是本项目某时间打包时生成的Treemap。这张图很好的呈现了打包后的文件大小，所包含库等有用的信息，方便后期更深入的优化。
   ![方块树形图](./resources/bundle_analysis_pic.png)
