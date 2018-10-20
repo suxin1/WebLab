@@ -6,9 +6,11 @@
 
 import "../stylesheets/style.scss";
 import "../../../shared/stylesheets/article.scss";
+import {test} from "./d3";
 
 import("d3/dist/d3.min").then(d3 => {
   "use strict";
+  test();
   let margin = 0,
       width = 904 - margin,
       height = 600 - margin;

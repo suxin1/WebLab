@@ -8,7 +8,6 @@ import "../../../shared/stylesheets/article.scss";
 import "normalize.css";
 
 import items from "./resource";
-import $ from "zepto";
 
 import {Header} from "../../../components/header/header";
 
@@ -38,7 +37,9 @@ function filterByType(items, type) {
 }
 
 
-(function () {
+import("zepto").then($ => {
+  $ = $.default;
+  // if(!window.$) window.$ = $;
   let itemCardTemp = $("#item-template").html();
   let target = $("#item-list");
 
@@ -63,4 +64,4 @@ function filterByType(items, type) {
       itemList.setState({items: filterByType(items.items, selectedTag)})
     }
   });
-})();
+});

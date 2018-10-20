@@ -1,6 +1,5 @@
-import $ from "zepto";
 import {multiSineWave} from "./multi_sin_wave";
 
-$(function () {
+import("zepto").then($ => {
   multiSineWave.init();
 });

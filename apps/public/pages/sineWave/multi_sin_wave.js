@@ -1,6 +1,6 @@
-import $ from "zepto";
-import canvas_obj from "./canvas";
+/* global: $ */
 
+import canvas_obj from "./canvas";
 import {sin} from "./math";
 
 export const multiSineWave = {

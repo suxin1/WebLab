@@ -50,3 +50,10 @@ Feel free to copy past all the code in this Repository.
  * 如果需要引入处在打包流程以外的文件，可以配置 CopyWebpackPlugin，将该文件复制到build文件夹，并在HTML模板里添加引用。如果用的是CDN加载，可以配置 externals 属性。
  * 当引用 node_module 下的库时，该库会被打包到 vendor bundle文件里面，如果引用的第三方库太多会导致vendor bundle文件过于臃肿。用动态加载会给引用库生成一个单独的文件生成一个单独的文件。
  * 使用 ES6 Module 中的 import() 实现按需加载。
+ * 请不要在模块文件中尝试动态引用，所有动态引用只应存在于entry文件。当某第三方库需要动态引用时（减小vendor bundle的size）又需要在模块文件中使用该库，可以在entry文件中将该库挂载到全局环境。
+ 
+ 
+ ### 包文件分析
+ 用 webpack-bundle-analyzer 生成Treemap来分析打包后的文件。
+ 本项目某时间的Treemap。这张图很好的呈现了打包后的文件大小，所包含库等有用的信息，方便后期更深入的优化。
+  ![方块树形图](./resources/bundle_analysis_pic.png)

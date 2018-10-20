@@ -1,8 +1,9 @@
+/* global: $ */
 /**
  * Created by Suxin(suxin1@live.com) in 2018/10/12.
  */
 
-import $ from "zepto";
+// import $ from "zepto";
 import anime from "animejs";
 
 const Mustache = require("mustache");
