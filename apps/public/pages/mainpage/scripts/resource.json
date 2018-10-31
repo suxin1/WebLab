@@ -1,6 +1,12 @@
 {
   "items": [
     {
+      "url": "./sine_wave.html",
+      "cover": "./images/sin_wave.gif",
+      "title": "Play with Trigonometry",
+      "type": "Canvas"
+    },
+    {
       "url": "./world_cup.html",
       "cover": "./images/world_cup.png",
       "title": "Map of the World Cup from year 1934",
