@@ -24,7 +24,7 @@ npm run build
 Feel free to copy past all the code in this Repository.
 
 ### 打包构建方案
-项目使用webpack打包构建。
+项目使用webpack打包构建，babel7预编译js（可以尽情使用ES6和ES7型特性），sass样式模块化
 
 #### 尝试解决的问题
  * JQuery, Zepto, D3等公共库动态加载
