@@ -12,8 +12,3 @@ npm start
 # 生成生产代码（编译）
 npm run build
 ```
-
-### 介绍
-此仓库为本人做的一些小的WEB练习的集合.
-
-Feel free to copy past all the code in this Repository.
