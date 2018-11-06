@@ -21,8 +21,6 @@ npm run build
 ### 介绍
 此仓库为本人做的一些小的WEB练习的集合。欢迎指出不足之处。
 
-Feel free to copy past all the code in this Repository.
-
 ### 打包构建方案
 项目使用webpack打包构建，babel7预编译js（可以尽情使用ES6和ES7型特性），sass样式模块化
 
