@@ -220,4 +220,4 @@ function(t){if("string"!=typeof t)throw new TypeError("expected a string.");retu
  *
  * Copyright (c) 2015, Jon Schlinkert.
  * Licensed under the MIT License.
- */var n=e(16);t.exports=function(t,r,e){if("object"!=typeof t&&"function"!=typeof t)throw new TypeError("expected an object or function.");if("string"!=typeof r)throw new TypeError("expected `prop` to be a string.");return n(e)&&("set"in e||"get"in e)?Object.defineProperty(t,r,e):Object.defineProperty(t,r,{configurable:!0,enumerable:!1,writable:!0,value:e})}},,,,,,,,,,,,,,,,,,function(t,r){}]]);
+ */var n=e(16);t.exports=function(t,r,e){if("object"!=typeof t&&"function"!=typeof t)throw new TypeError("expected an object or function.");if("string"!=typeof r)throw new TypeError("expected `prop` to be a string.");return n(e)&&("set"in e||"get"in e)?Object.defineProperty(t,r,e):Object.defineProperty(t,r,{configurable:!0,enumerable:!1,writable:!0,value:e})}},,,,,,,,,,,,,,,,,,,function(t,r){}]]);

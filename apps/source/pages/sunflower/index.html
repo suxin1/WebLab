@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
+  <head>
+        <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Play with Sine Function</title>
+    <title></title>
 
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no">
 
     <!-- Web Application Manifest -->
-    <link rel="manifest" href="manifest.json">
+    <!--<link rel="manifest" href="manifest.json">-->
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -35,11 +35,18 @@
     <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
-<link href="statics/vendor.f595c055999e383509db.css" rel="stylesheet"><link href="statics/shared.f595c055999e383509db.css" rel="stylesheet"><link href="statics/sine_wave.f595c055999e383509db.css" rel="stylesheet"></head>
-<body>
-<div class="article">
-    <canvas id="singleSineWave"></canvas>
-</div>
-
-<script type="text/javascript" src="statics/vendor.346837d390fe.js"></script><script type="text/javascript" src="statics/shared.3e8d7d7720da.js"></script><script type="text/javascript" src="statics/sine_wave.3110ba260f92.js"></script></body>
+  </head>
+  <body>
+    <div class="article center-align">
+        <div class="chart" id="chart"></div>
+        <div class="input-field">
+            <label for="pvalueInput">Param</label>
+            <input id="pvalueInput" type="range" min="130.0" max="138" value="137.5" step="0.1">
+        </div>
+        <div class="input-field">
+            <label for="scaleInput">Scale</label>
+            <input id="scaleInput" type="range" min="8" max="15" value="10" step="0.1">
+        </div>
+    </div>
+  </body>
 </html>

@@ -10,9 +10,9 @@ const env = new Habitat();
 const APPDIR = fs.realpathSync(process.cwd());
 export const PATH = {
     rootPath: APPDIR,
-    publicPath: path.resolve(APPDIR, "public"),
-    buildPath: path.resolve(APPDIR, "assets"),
-    reactSrc: path.resolve(APPDIR, "public/components/")
+    publicPath: path.resolve(APPDIR, "source"),
+    buildPath: path.resolve(APPDIR, "build"),
+    reactSrc: path.resolve(APPDIR, "source/components/")
 };
 
 export default env;
