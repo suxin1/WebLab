@@ -21,10 +21,10 @@ const entry = {
   "sunflower": getEntry("pages/sunflower/main.js"),
   "sine_wave": getEntry("pages/sine_wave/main.js"),
   "avatar_editor": getEntry("pages/avatar_editor/main.js"),
+  "water_fall": getEntry("pages/water_fall/main.js"),
 };
 
 export const MULTIPAGE_CONFIG = (mode) => {
-
   const IS_DEVELOPMENT = mode === "development";
 
   let plugins = [

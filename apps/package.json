@@ -64,6 +64,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "@material/layout-grid": "^0.40.1",
+    "ajv": "^6.8.1",
     "animejs": "^2.2.0",
     "d3": "^5.7.0",
     "mustache": "^3.0.0",
