@@ -20,6 +20,7 @@ export function fastSolve(items, avail, memo=null) {
     // Explore right branch
     let [withoutValue, withoutItems] = fastSolve(items.splice(1), avail);
 
+    // this will ensure always choose the best option.
     if(withValue > withoutValue) {
       result = [withValue, withItems];
     } else {

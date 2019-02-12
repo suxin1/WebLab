@@ -1,3 +1,5 @@
+import echo from "echo-js";
+
 import './styles.scss';
 
 import {fastSolve} from "./partition";
@@ -17,14 +19,16 @@ function getImages() {
  * @param width
  * @returns {HTMLElement}
  */
-function createImage(data, width=1200) {
+function createImage(data, width = 1200) {
   let container = document.createElement('div');
   container.classList.add('image_container');
+
   let image = document.createElement('img');
   image.style.width = `${data.width - 10}px`;
   image.style.height = `${data.height}px`;
   image.style.background = "#aaa";
-  image.src = `${IMAGE_BASE_URL}/${data.width}/${data.height}/?image=${data.id}`;
+  // image.src = `${IMAGE_BASE_URL}/${data.width}/${data.height}/?image=${data.id}`;
+  image.dataset.echo = `${IMAGE_BASE_URL}/${data.width}/${data.height}/?image=${data.id}`;
   container.appendChild(image);
   return container;
 }
@@ -66,9 +70,9 @@ function find_partition_greedy(list, n = 3) {
     // Find smallest.
     let smallest_s = sum(sets[0], (i) => i.height);
     let smallest_index = 0;
-    for(let j = 1;j<sets.length;j++) {
+    for (let j = 1; j < sets.length; j++) {
       let cur_sum = sum(sets[j], (i) => i.height);
-      if(cur_sum < smallest_s) {
+      if (cur_sum < smallest_s) {
         smallest_s = cur_sum;
         smallest_index = j;
       }
@@ -82,17 +86,17 @@ function find_partition_greedy(list, n = 3) {
 }
 
 
-function find_partition_dynamic(items, n=3) {
+function find_partition_dynamic(items, n = 3) {
   let sum = items.reduce((s, item) => {
     return s + item.height;
   }, 0);
 
-  let base = Math.floor(sum/n);
+  let base = Math.floor(sum / n);
 
   let res = [];
   let solved = [];
 
-  for(let i=0;i<n;i++) {
+  for (let i = 0; i < n; i++) {
     let remains = items.filter(item => {
       return !solved.some(i => i.id === item.id);
     });
@@ -106,17 +110,17 @@ function find_partition_dynamic(items, n=3) {
 
 
 // water fall controller
-let water_fall = (function() {
+let water_fall = (function () {
   return {
     container: document.querySelector('#image_collection'),
     container_width: 1200,
     columns: 4,
     image_containers: [],
-    init: function(list) {
-      for(let i=0;i<this.columns;i++) {
+    init: function (list) {
+      for (let i = 0; i < this.columns; i++) {
         let column = document.createElement('div');
         column.style.float = "left";
-        column.style.width = `${(1/this.columns * 100).toFixed(2)}%`;
+        column.style.width = `${(1 / this.columns * 100).toFixed(2)}%`;
         this.image_containers.push(column);
         this.container.appendChild(column);
       }
@@ -126,30 +130,39 @@ let water_fall = (function() {
       let initial_collection = find_partition_dynamic(newList, this.columns);
       this.addImage(initial_collection);
     },
-    imageDataProcess: function(jsonData) {
+    imageDataProcess: function (jsonData) {
       let newData = jsonData.map((image) => {
-        let width = Math.floor(this.container_width/this.columns);
-        let height = Math.floor(image.height * width / image.width + Math.random()*100);
+        let width = Math.floor(this.container_width / this.columns);
+        let height = Math.floor(image.height * width / image.width + Math.random() * 100);
         image.width = width;
         image.height = height;
         return image;
       });
       return newData;
     },
-    addImage: function(collection) {
+    addImage: function (collection) {
       let maxLength = collection[0].length;
 
-      for(let i=0;i<collection.length;i++) {
-        if(collection[i].length>maxLength) maxLength=collection[i].length;
+      for (let i = 0; i < collection.length; i++) {
+        if (collection[i].length > maxLength) maxLength = collection[i].length;
       }
       // append image from top to bottom
-      for(let i=0;i<maxLength;i++) {
-        for(let j=0;j<collection.length;j++) {
-          if(collection[j][i]) {
+      for (let i = 0; i < maxLength; i++) {
+        for (let j = 0; j < collection.length; j++) {
+          if (collection[j][i]) {
             this.image_containers[j].appendChild(createImage(collection[j][i]));
           }
         }
       }
+
+      echo.init({
+        offset: 100,
+        throttle: 250,
+        unload: false,
+        callback: function (element, op) {
+          console.log(element, 'has been', op + 'ed')
+        }
+      });
     }
   }
 })();
