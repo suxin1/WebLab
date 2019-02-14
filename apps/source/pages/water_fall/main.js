@@ -115,22 +115,35 @@ let water_fall = (function () {
     container: document.querySelector('#image_collection'),
     container_width: 1200,
     columns: 4,
-    image_containers: [],
+
+    image_buffer: [],
+    image_group_buffer: [],
+    image_containers_buffer: [],
+
+    direction_switch: false,
+
     init: function (list) {
+
+      this.init_image_group(this.columns);
+
+      this.add_images(list);
+    },
+
+
+    init_image_group:function(num_columns) {
+
+      this.image_containers_buffer = [];
+
       for (let i = 0; i < this.columns; i++) {
         let column = document.createElement('div');
         column.style.float = "left";
-        column.style.width = `${(1 / this.columns * 100).toFixed(2)}%`;
-        this.image_containers.push(column);
+        column.style.width = `${(1 / num_columns * 100).toFixed(2)}%`;
+        this.image_containers_buffer.push(column);
         this.container.appendChild(column);
       }
-
-      let newList = this.imageDataProcess(list);
-      // let initial_collection = find_partition_greedy(newList, length);
-      let initial_collection = find_partition_dynamic(newList, this.columns);
-      this.addImage(initial_collection);
     },
-    imageDataProcess: function (jsonData) {
+
+    image_data_process: function (jsonData) {
       let newData = jsonData.map((image) => {
         let width = Math.floor(this.container_width / this.columns);
         let height = Math.floor(image.height * width / image.width + Math.random() * 100);
@@ -140,7 +153,32 @@ let water_fall = (function () {
       });
       return newData;
     },
-    addImage: function (collection) {
+
+    add_images: function(images) {
+      this.direction_switch = !this.direction_switch;
+
+      let _images = this.image_data_process(images); // 处理图片数据
+      this.image_buffer = this.image_buffer.concat(_images); // 缓存未分组图片数据
+      let res = find_partition_dynamic(_images, this.columns); // 计算图片分组
+
+      res = this.direction_switch?res.reverse():res;
+
+      this._add_image_group(res); // 缓存已分组图片
+      this.render(res);
+    },
+
+    _add_image_group: function(group) {
+      let _group_buffer = [...this.image_group_buffer];
+
+      if(group.length === _group_buffer.length) {
+        for(let i=0;i<group.length;i++) {
+          _group_buffer[i].concat(group[i]);
+        }
+        this.image_group_buffer = _group_buffer;
+      }
+    },
+
+    render: function (collection) {
       let maxLength = collection[0].length;
 
       for (let i = 0; i < collection.length; i++) {
@@ -150,7 +188,7 @@ let water_fall = (function () {
       for (let i = 0; i < maxLength; i++) {
         for (let j = 0; j < collection.length; j++) {
           if (collection[j][i]) {
-            this.image_containers[j].appendChild(createImage(collection[j][i]));
+            this.image_containers_buffer[j].appendChild(createImage(collection[j][i]));
           }
         }
       }
@@ -160,7 +198,7 @@ let water_fall = (function () {
         throttle: 250,
         unload: false,
         callback: function (element, op) {
-          console.log(element, 'has been', op + 'ed')
+          // console.log(element, 'has been', op + 'ed')
         }
       });
     }
@@ -168,5 +206,5 @@ let water_fall = (function () {
 })();
 
 getImages().then(jsonData => {
-  water_fall.init(jsonData.splice(154, 300))
+  water_fall.init(jsonData.splice(1, 100));
 });

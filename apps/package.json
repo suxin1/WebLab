@@ -71,6 +71,7 @@
     "mustache": "^3.0.0",
     "normalize": "^0.3.1",
     "normalize.css": "^8.0.0",
+    "p5": "^0.7.3",
     "zepto": "^1.2.0"
   }
 }

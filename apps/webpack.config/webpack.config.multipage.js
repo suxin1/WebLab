@@ -22,6 +22,7 @@ const entry = {
   "sine_wave": getEntry("pages/sine_wave/main.js"),
   "avatar_editor": getEntry("pages/avatar_editor/main.js"),
   "water_fall": getEntry("pages/water_fall/main.js"),
+  "poly_dots": getEntry("pages/poly_dots/main.js"),
 };
 
 export const MULTIPAGE_CONFIG = (mode) => {

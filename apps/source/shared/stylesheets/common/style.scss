@@ -1,13 +1,66 @@
 @import "./font";
 @import "~@material/layout-grid/mdc-layout-grid.scss";
 
-body {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
 .page-content {
   padding-top: 4rem;
+}
+
+body {
+  font-family: 'Work Sans', 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18pt;
+  background-color: #fafafa;
+  color: #202020;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 1;
+  line-height: 1.4;
+  margin: 26px;
+}
+
+li#icons {
+  font-family: icons;
+  font-size: 90%;
+  margin-top: 5px;
+  letter-spacing: 3.5px;
+  user-select: none;
+}
+
+a {
+  color: #204080;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+a:hover {
+  color: #6080A0;
+}
+
+canvas {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+svg {
+  height: 1em;
+  width: 1em;
+  transform: translate(2px, 4px);
+}
+
+@media screen and (max-device-width: 800px) {
+  body {
+    font-size: 30pt;
+  }
+
+  svg {
+    transform: translate(3.5px, 7px);
+  }
 }

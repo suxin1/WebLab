@@ -1,8 +1,10 @@
 export function fastSolve(items, avail, memo=null) {
-
   let result = [];
   if(!memo) memo = {};
-
+  let memo_key = `${items.length},${avail}`;
+  if(memo[memo_key]) {
+    return memo[memo_key];
+  }
   if(items.length === 0 || avail === 0) {
     result = [0, []];
   }
@@ -27,6 +29,6 @@ export function fastSolve(items, avail, memo=null) {
       result = [withoutValue, withoutItems];
     }
   }
-
+  memo[memo_key] = result;
   return result;
 }

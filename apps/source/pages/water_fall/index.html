@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
-        <meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,10 +35,22 @@
     <!--
     <link rel="canonical" href="http://www.example.com/">
     -->
-  </head>
-  <body>
-    <div class="content" id="main_content">
-      <div id="image_collection"></div>
-    </div>
-  </body>
+    <script type="text/template" id="image_card">
+        {{#items}}
+        <div class="media-card">
+            <div class="media-card-cover">
+                <img src="" alt="" data-echo="{{image_src}}">
+            </div>
+            <div class="media-card-info">
+                {{author}}
+            </div>
+        </div>
+        {{/items}}
+    </script>
+</head>
+<body>
+<div class="content" id="main_content">
+    <div id="image_collection"></div>
+</div>
+</body>
 </html>
