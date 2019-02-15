@@ -39,9 +39,10 @@ const p5 = new P5((p) => {
    * @param q {Number}: travel distance since start
    */
   function dot(N, q) {
-    q = (q + 0.5 / N) % 1;
+    // q = (q + 0.5 / N) % 1;
     qq = (q * N) % 1;
     rot = p.int(q * N);
+
     p.push();
     p.rotate(p.TWO_PI * rot / N);
     p.noStroke();
