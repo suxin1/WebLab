@@ -23,6 +23,7 @@ const entry = {
   "avatar_editor": getEntry("pages/avatar_editor/main.js"),
   "water_fall": getEntry("pages/water_fall/main.js"),
   "poly_dots": getEntry("pages/poly_dots/main.js"),
+  "motion_graphic_1": getEntry("pages/motion_graphic_1/main.js"),
 };
 
 export const MULTIPAGE_CONFIG = (mode) => {
