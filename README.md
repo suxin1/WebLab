@@ -18,9 +18,6 @@ npm start
 npm run build
 ```
 
-### 介绍
-一些小小小的的WEB练习集合。
-
 ### 打包构建方案
 项目使用webpack打包构建，babel7预编译js（可以尽情使用ES6和ES7型特性），sass样式模块化
 
