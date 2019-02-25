@@ -1,0 +1,21 @@
+.content * {
+  box-sizing: border-box; }
+
+.content {
+  width: 1200px;
+  margin: 0 auto; }
+
+#image_collection div {
+  width: 33.33%; }
+
+#image_collection div.image_container {
+  width: 100%;
+  border: 0;
+  overflow: hidden;
+  border-radius: 5px; }
+
+#image_collection div.image_container img {
+  margin: 5px 5px 5px 5px;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 5px; }

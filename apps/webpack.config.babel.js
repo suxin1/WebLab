@@ -56,7 +56,7 @@ const IS_DEVELOPMENT = env.get("NODE_ENV") === "development";
 
 
 module.exports = (env, argv) => {
-    let config = MULTIPAGE_CONFIG(argv.mode);
+    let config = MULTIPAGE_CONFIG(argv.mode, argv);
     if (argv.mode === "development") {
         config.devtool = "inline-source-map";
         config.watch = true;
