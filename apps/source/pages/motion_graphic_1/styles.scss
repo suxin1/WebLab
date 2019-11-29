@@ -1,9 +1,13 @@
+body {
+  background: black;
+}
 .content * {
   box-sizing: border-box;
 }
 .content {
   width: 1200px;
   margin: 0 auto;
+  text-align: center;
 }
 
 #image_collection div {

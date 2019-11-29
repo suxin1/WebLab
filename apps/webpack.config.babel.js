@@ -1,12 +1,11 @@
 /***************************************************************************
- * 解决的问题
+ * 特点：
  * - 公共库JQuery, D3等和共享代码的加载
  * - 模块化 (AMD/CommonJS/UMD/ES6 Module)
  * - 资源缓存(Caching with hashing)
  * - 按需加载
  * - 首屏加载优化
  *
- * 解决方案:
  *
  * 公共库加载:
  *    webpack4 Code Splitting: https://webpack.js.org/guides/code-splitting/
