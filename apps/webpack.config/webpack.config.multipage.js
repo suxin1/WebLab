@@ -9,6 +9,7 @@ import CopyWebpackPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
 
+
 function getEntry(file) {
   return path.resolve(PATH.rootPath, "source", file);
 }
@@ -28,6 +29,7 @@ const entry = {
 
 export const MULTIPAGE_CONFIG = (mode, argv) => {
   const IS_DEVELOPMENT = mode === "development";
+  let pages = filterEntry(entry, argv.page);  // 允许指定运行页面。
 
   let plugins = [
     new ExtractTextPlugin("statics/[name].[hash].css"),
@@ -54,7 +56,7 @@ export const MULTIPAGE_CONFIG = (mode, argv) => {
   }
 
   return {
-    entry: argv.page?{[argv.page]: entry[argv.page]}:entry,
+    entry: pages,
     optimization: {
       splitChunks: {
         cacheGroups: {
@@ -63,7 +65,7 @@ export const MULTIPAGE_CONFIG = (mode, argv) => {
             minChunks: 2,
             name: "shared",
             maxInitialRequests: 5, // The default limit is too small to showcase the effect
-            minSize: 0 // This is example is too small to create commons chunks
+            minSize: 1000 // This is example is too small to create commons chunks
           },
           vendor: {
             test: /[\\/]node_modules[\\/]/,
@@ -103,7 +105,24 @@ const getHTMLPlugins = (modules, root, assetsRoot) => {
     return new HtmlWebpackPlugin({
       template: `${assetsRoot}/pages/${entryName}/index.html`, //path.resolve(__dirname, "./assets/webpack.template.hbs"),
       filename: `${entryName}.html`,
+      // chunks: ['vendor', entryName, 'shared'],
       chunks: ['vendor', entryName, 'shared'],
     })
   });
+};
+
+
+/**
+ * 如果有page参数，只允许参数指定的page
+ * @param modules {Object}: A list that contains all entries.
+ * @param teststr {string}: name or key of page
+ * @return {Object}
+ */
+const filterEntry = (modules, teststr) => {
+  if(!teststr) return modules;
+  let result = {};
+  Object.keys(modules).filter(s => s === teststr).forEach(s => {
+    result[s] = modules[s];
+  });
+  return result;
 };
