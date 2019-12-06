@@ -29,7 +29,6 @@ export const RESOURCES_JS_CONFIG = {
         // "google-analytics": path.resolve(PATH.publicPath, "resources/scripts/google-analytics.js")
         "header": path.resolve(PATH.publicPath, "resources/scripts/header.js")
     },
-
     output: {
         path: path.resolve(PATH.buildPath, "resources"),
         pathinfo: IS_DEVELOPMENT,
