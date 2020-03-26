@@ -9,6 +9,8 @@ npm install
 # 运行开发环境
 npm start
 
+# 开发环境下运行单个页面
+npm start --page=page_name
 # 生成生产代码（编译）
 npm run build
 ```

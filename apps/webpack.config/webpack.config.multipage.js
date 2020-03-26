@@ -60,7 +60,13 @@ export const MULTIPAGE_CONFIG = (mode, argv) => {
     let plugins = [
         new ExtractTextPlugin("statics/[name].[hash].css"),
         new ProgressBarPlugin({clear: false}),
-        new CopyWebpackPlugin(["source/resources/world_countries.json", "source/resources/world_cup_geo.tsv",]),
+        new CopyWebpackPlugin([
+            "source/resources/world_countries.json",
+            "source/resources/country-code.json",
+            "source/resources/countries-50m.json",
+            "source/resources/world_cup_geo.tsv",
+            "source/resources/graticule.json",
+        ]),
         new CopyWebpackPlugin([{from: "source/resources/images", to: "images"}],),
     ];
 

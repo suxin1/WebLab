@@ -1,0 +1,10 @@
+{
+    "files": [
+        "source/pages/covid_19_record/utils/index.ts",
+        "source/pages/covid_19_record/utils/request.ts"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "target": "es5"
+    }
+}
