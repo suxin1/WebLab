@@ -10,5 +10,6 @@
   "poly_dots": "pages/poly_dots/main.js",
   "motion_graphic_1": "pages/motion_graphic_1/main.js",
   "hookitup": "pages/hookitup/main.js",
-  "covid_19_record": "pages/covid_19_record/main.js"
+  "covid_19_record": "pages/covid_19_record/main.js",
+  "awesome_style": "pages/awesome_style/main.js"
 }
