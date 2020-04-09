@@ -1,1 +1,1 @@
-import "./styles.css";
+import "./stylesheets/icon-box.css";
