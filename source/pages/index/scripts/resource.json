@@ -29,6 +29,30 @@
       "cover": "./images/sunflower.png",
       "title": "Sunflower like drawing",
       "type": "D3"
+    },
+    {
+      "url": "./awesome_style.html",
+      "cover": "./images/awesome_style.png",
+      "title": "按钮样式",
+      "type": "CSS"
+    },
+    {
+      "url": "./motion_graphic_1.html",
+      "cover": "./images/motion_graphic_1.png",
+      "title": "数字动画",
+      "type": "Canvas"
+    },
+    {
+      "url": "./poly_dots.html",
+      "cover": "./images/poly_dots.png",
+      "title": "数字动画",
+      "type": "Canvas"
+    },
+    {
+      "url": "./water_fall.html",
+      "cover": "./images/water_fall.png",
+      "title": "图片瀑布流算法",
+      "type": "HTML"
     }
   ]
 }
