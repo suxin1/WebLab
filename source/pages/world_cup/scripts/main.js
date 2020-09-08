@@ -10,6 +10,7 @@ import {test} from "./d3";
 
 import("d3/dist/d3.min").then(d3 => {
   "use strict";
+  debugger
   test();
   let margin = 0,
       width = 904 - margin,

@@ -145,7 +145,7 @@ const getHTMLPlugins = (modules, root, assetsRoot) => {
 
 
 /**
- * 如果有page参数，只允许参数指定的page
+ * 如果有page参数，只构建指定的page
  * @param modules {Object}: A list that contains all entries.
  * @param teststr {string}: name or key of page
  * @return {Object}

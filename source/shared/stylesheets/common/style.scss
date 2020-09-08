@@ -41,19 +41,19 @@ a:hover {
   color: #6080A0;
 }
 
-canvas {
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
-svg {
-  height: 1em;
-  width: 1em;
-  transform: translate(2px, 4px);
-}
+//canvas {
+//  left: 50%;
+//  position: absolute;
+//  top: 50%;
+//  transform: translate(-50%, -50%);
+//  z-index: -1;
+//}
+//
+//svg {
+//  height: 1em;
+//  width: 1em;
+//  transform: translate(2px, 4px);
+//}
 
 @media screen and (max-device-width: 800px) {
   body {
